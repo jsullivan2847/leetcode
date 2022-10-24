@@ -169,16 +169,72 @@
 // 3. sort str and check if key[str] exists if it does add str to the array 
 // 4. return Object.values[key]
 
-const strs = ['cat', 'tac', 'bob', 'obb'];
+// const strs = ['cat', 'tac', 'bob', 'obb'];
 
-const groupAnagrams = (strs) => {
-    const key = {}
-    for(str of strs){
-        let a = str.split('').sort().join('');
-        key[a] ? key[a].push(str) : key[a] = [str]
+// const groupAnagrams = (strs) => {
+//     const key = {}
+//     for(str of strs){
+//         let a = str.split('').sort().join('');
+//         key[a] ? key[a].push(str) : key[a] = [str]
+//     }
+//     return Object.values(key)
+// }
+
+// console.log(groupAnagrams(strs))
+
+//Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+// Each row must contain the digits 1-9 without repetition.
+// Each column must contain the digits 1-9 without repetition.
+// Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+// Note:
+
+// A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+// Only the filled cells need to be validated according to the mentioned rules.
+
+// input array of arrays
+// output boolean
+
+// loop through row of board
+// create key for row
+// loop through row
+// if any key already exists there is a duplicate - return false 
+
+// example
+// const key  = {
+//     5: true, 
+//     3: true, 
+//     7: true,
+// }
+const board = 
+[["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]];
+
+var isValidSudoku = function(board) {
+    for(let row of board){
+        let key = {}
+        for(let i in row){
+            if(key[row[i]]){
+                console.log(key)
+                return false 
+            }
+            if(row[i] != '.'){
+                key[i] = row[i];
+            }
+            else{
+                key[i] = 0
+            }
+        }
+        console.log(key)
     }
-    return Object.values(key)
-}
+    return true
+};
 
-console.log(groupAnagrams(strs))
-
+console.log(isValidSudoku(board))
