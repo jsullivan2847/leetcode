@@ -239,3 +239,24 @@ var isValidSudoku = function(board) {
 
 console.log(isValidSudoku(board))
 //fdjskfjd
+
+// if(1==="1"){
+//     console.log(true)
+// }
+// else{
+//     console.log(false);
+// }
+
+// const test = (a,b) => c
+
+//two sum II - Input Array is Sorted
+
+var twoSum = function(numbers, target) {
+    for(let i = 0; i < numbers.length; i ++){
+        console.log(numbers[i])
+    }
+};
+
+
+
+console.log(twoSum([2,7,11,15], 9));
