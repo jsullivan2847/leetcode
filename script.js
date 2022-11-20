@@ -237,7 +237,7 @@ var isValidSudoku = function(board) {
     return true
 };
 
-console.log(isValidSudoku(board))
+// console.log(isValidSudoku(board))
 //fdjskfjd
 
 // if(1==="1"){
@@ -251,11 +251,39 @@ console.log(isValidSudoku(board))
 
 //two sum II - Input Array is Sorted
 
+// Brute Force O(n^2)
+
+// var twoSum = function(numbers, target) {
+//     for(let i = 0; i < numbers.length; i ++){
+//         for(let j = i + 1; j < numbers.length; j ++){
+//             if(numbers[i] + numbers[j] === target){
+//                 return [i + 1, j +1]
+//             }
+//         }
+//     };
+// };
+
+// Linear O(n)
+
 var twoSum = function(numbers, target) {
-    for(let i = 0; i < numbers.length; i ++){
-        console.log(numbers[i])
+    let leftI = 0;
+    let rightI = numbers.length - 1;
+
+    while(leftI < rightI){
+
+        let sum = numbers[leftI] + numbers[rightI];
+
+        if(sum === target){
+            return [leftI + 1, rightI + 1];
+        }
+        else if(sum > target){
+            rightI -= 1;
+        }
+        else if(sum < target){
+            leftI += 1;
+        }
     }
-};
+}
 
 
 
