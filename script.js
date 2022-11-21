@@ -287,4 +287,59 @@ var twoSum = function(numbers, target) {
 
 
 
-console.log(twoSum([2,7,11,15], 9));
+// console.log(twoSum([2,7,11,15], 9));
+
+
+// 3 Sum
+/*
+Given an integer array nums, return all the triplets [nums[i],
+nums[j], nums[k]] such that i != j, i != k, and j != k, and 
+nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not 
+contain duplicate triplets.
+*/
+
+/*
+
+Input array
+Output array of arrays of triplets
+
+1. Sort ascendingly check
+2. loop using 2 pointer check
+3. skip duplicate values
+
+*/
+var threeSum = function(nums) {
+    nums.sort((a,b) => a-b );
+    let ans = [];
+    for(let i = 0; i < nums.length - 1; i++){
+        if(nums[i] === nums[i -1]) continue;
+        let j = 1 + i;
+        let k = nums.length - 1;
+        let target = nums[i] * -1
+        console.log(nums[i],nums[j],nums[k])
+        
+        while(j < k){
+            let sum = nums[j] + nums[k];
+            if(sum > target){
+                k -- 
+            }
+            else if(sum < target){
+                j ++
+            }
+            else if(sum === target){
+                ans.push([nums[i], nums[j], nums[k]]);
+                while(j < k && nums[j] === nums[j + 1]) j++
+                while(j < k && nums[k] == nums[k - 1]) k --
+                j++
+                k--
+            }
+            j ++
+            k --
+         }
+    }
+    return ans
+};
+
+console.log(threeSum([1, -1, -1, 0]))
