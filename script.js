@@ -342,4 +342,136 @@ var threeSum = function(nums) {
     return ans
 };
 
-console.log(threeSum([1, -1, -1, 0]))
+// console.log(threeSum([1, -1, -1, 0]))
+
+
+
+/*
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, 
+find two numbers such that they add up to a specific target number. Let these two numbers be 
+numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+*/
+
+
+// input array and int
+// loop through the array from both sides inward until we find the indices that add up to target
+// return array of indices 
+var twoSum = function(nums, target){
+    let l = 0;
+    let r = nums.length - 1;
+
+    while(l < r){
+        let sum = nums[l] + nums[r];
+        if(sum === target){
+            return [l +1,r + 1];
+        }
+        else if(sum < target){
+            l ++;
+        }
+        else if(sum > target){
+            r --;
+        }
+    }
+}
+
+
+/*
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, 
+and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets.
+
+ 
+
+Example 1:
+
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+// Input array nums output array of subarrays
+// loop through nums and find 3 indices that add up to 0
+// skip over duplicate answers 
+
+// sort nums
+// for loop through nums i
+// j = i + 1, k = nums.length - 1
+// inner while loop adding i to j and k = sum
+// if
+// a. equals 0 add 3 [i,j,k] to ans and j ++ k ---
+// b. if sum > 0 k--
+// c. if sum < 0 j++
+
+// if i = i -1 i ++
+// if k = k -1 k --
+// if j = j -1 j ++
+
+*/
+
+var threeSum2 = function(nums){
+    let ans = [];
+    nums.sort((a,b) => a-b);
+    console.log(nums)
+    for(let i = 0; i < nums.length - 2; i ++){
+        if(nums[i] === nums[i - 1]) continue;
+        let j = i + 1;
+        let k = nums.length - 1;
+        let target = nums[i] * -1
+
+        console.log("nums[i] * -1",target)
+        console.log('j',nums[j],'k',nums[k])
+
+        while(j < k){
+            let sum = nums[k] + nums[j];
+            if(sum === target){
+                ans.push([nums[i], nums[j], nums[k]]);
+                while(j < k && nums[j] === nums[j + 1]) j++;
+                while(j < k && nums[k] === nums[k - 1]) k--;
+                console.log(ans)
+                j++;
+                k--;
+            }
+            else if(sum < target){
+                console.log('sum < target')
+                j++;
+            }
+            else if(sum > target){
+                console.log('sum > target')
+                k--;
+            }
+        }
+    }
+    return ans;
+}
+const nums = [0,1,1];
+
+console.log(threeSum2(nums));
+
+/* 
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+
+
+Example 1:
+
+
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+*/
+
+
+
+
+
+
