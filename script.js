@@ -450,7 +450,7 @@ var threeSum2 = function(nums){
 }
 const nums = [0,1,1];
 
-console.log(threeSum2(nums));
+// console.log(threeSum2(nums));
 
 /* 
 You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
@@ -475,3 +475,9 @@ Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,
 
 
 //fldsk
+
+const fjaksf = function(a,b){
+    return a + b;
+}
+
+console.log(fjaksf(1));
